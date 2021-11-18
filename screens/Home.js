@@ -38,7 +38,6 @@ export default function Home({navigation}) {
 
   useEffect(() => {
     getRestaurantsFromYelp();
-    console.log(GOOGLE_PLACES)
   }, [city, activeTab]);
   return (
     <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
