@@ -11,18 +11,20 @@ const yelpRestaurantInfo = {
   categories: [{ title: "Thai" }, { title: "comfort fgood" }],
 };
 
-const {name, image, price, reviews, rating, categories} = yelpRestaurantInfo
-
-const formattedCategories = categories.map((cat) => cat.title).join(" • ")
-
-const description = `${formattedCategories} ${price ? " • " + price : ''} ${rating} ${reviews}`
-
 // const image =
 //   "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80";
 // const name = "Farmhouse Kitcehn Thai Cuisine";
 // const description = "Thai • Comfort food • $$ ";
 
-export default function About() {
+export default function About(props) {
+  const { name, image, price, reviews, rating, categories } =
+    props.route.params;
+
+  const formattedCategories = categories.map((cat) => cat.title).join(" • ");
+
+  const description = `${formattedCategories} ${
+    price ? " • " + price : ""
+  } • ${rating}/5 • ( Reviews: ${reviews}+ )`;
   return (
     <View>
       <RestaurantImage image={image} />

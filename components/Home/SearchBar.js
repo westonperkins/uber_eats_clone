@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete"; 
-import Ionicons from "react-native-vector-icons/Ionicons";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import {Ionicons} from "@expo/vector-icons";
+import {AntDesign} from "@expo/vector-icons";
+// import AntDesign from "react-native-vector-icons/AntDesign";
 import {GOOGLE_PLACES} from "@env"
 
 export default function SearchBar({cityHandler}) {
@@ -13,7 +14,6 @@ export default function SearchBar({cityHandler}) {
         onPress={(data, details = null) => {
             const city = data.description.split(',')[0]
             cityHandler(city)
-            console.log(yelp)
         }}
         placeholder="Search"
         styles={{
