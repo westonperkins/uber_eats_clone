@@ -1,21 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-const yelpRestaurantInfo = {
-  name: "Farmhouse Kitcehn Thai Cuisine",
-  image:
-    "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
-  price: "$$",
-  reviews: "1500",
-  rating: 4.5,
-  categories: [{ title: "Thai" }, { title: "comfort fgood" }],
-};
-
-// const image =
-//   "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80";
-// const name = "Farmhouse Kitcehn Thai Cuisine";
-// const description = "Thai • Comfort food • $$ ";
-
 export default function About(props) {
   const { name, image, price, reviews, rating, categories } =
     props.route.params;
@@ -47,7 +32,7 @@ const RestaurantName = (props) => (
       marginHorizontal: 15,
     }}
   >
-    {props.title}
+    {props.name}
   </Text>
 );
 
