@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
-import firebase from '../../firebase.js'
+import firebase from "../../firebase.js";
+import LottieView from "lottie-react-native";
 
-
-export default function ViewCart({navigation}) {
+export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
-  
+  const [loading, setLoading] = useState(false);
+
   const { items, restaurantName } = useSelector(
     (state) => state.cartReducer.selectedItems
   );
@@ -21,15 +22,20 @@ export default function ViewCart({navigation}) {
   });
 
   const addOrderToFireBase = () => {
+    setLoading(true);
     const db = firebase.firestore();
-    db.collection("orders").add({
-      items: items,
-      restaurantName: restaurantName,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-
-    });
-    setModalVisible(false);
-    navigation.navigate("OrderCompleted")
+    db.collection("orders")
+      .add({
+        items: items,
+        restaurantName: restaurantName,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(() => {
+        setTimeout(() => {
+          setLoading(false);
+          navigation.navigate("OrderCompleted");
+        }, 2500);
+      });
   };
 
   const styles = StyleSheet.create({
@@ -89,6 +95,7 @@ export default function ViewCart({navigation}) {
                 }}
                 onPress={() => {
                   addOrderToFireBase();
+                  setModalVisible(false);
                 }}
               >
                 <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
@@ -111,7 +118,6 @@ export default function ViewCart({navigation}) {
     );
   };
 
-  console.log(totalUSD);
   return (
     <>
       <Modal
@@ -126,11 +132,11 @@ export default function ViewCart({navigation}) {
         <View
           style={{
             flex: 1,
-            alignitems: "center",
+            alignItems: "center",
             justifyContent: "center",
             flexDirection: "row",
             position: "absolute",
-            bottom: 90,
+            bottom: 130,
             zIndex: 999,
           }}
         >
@@ -145,7 +151,6 @@ export default function ViewCart({navigation}) {
               style={{
                 marginTop: 20,
                 backgroundColor: "black",
-                alignItems: "center",
                 flexDirection: "row",
                 justifyContent: "flex-end",
                 padding: 15,
@@ -161,6 +166,28 @@ export default function ViewCart({navigation}) {
               <Text style={{ color: "white", fontSize: 20 }}>{totalUSD}</Text>
             </TouchableOpacity>
           </View>
+        </View>
+      ) : (
+        <></>
+      )}
+      {loading ? (
+        <View
+          style={{
+            backgroundColor: "black",
+            position: "absolute",
+            opacity: 0.6,
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          <LottieView
+            style={{ height: 200 }}
+            source={require("../../assets/animations/scanner.json")}
+            autoPlay
+            speed={3}
+          />
         </View>
       ) : (
         <></>
