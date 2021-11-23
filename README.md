@@ -1,3 +1,13 @@
+ #### To start app
+ 
+ #### npm start / expo start 
+ #### press i | open IOS simulator
+ #### press r | to reload (if necessary)
+
+
+
+
+
 # My Universal React Project
 
 <p>
