@@ -1,4 +1,4 @@
- #### To start app
+ ### To start app
  
  #### npm start / expo start 
  #### press i | open IOS simulator
