@@ -1,54 +1,29 @@
- ### To start app
+ ### To start app - *after pulling repo*
+
  
- #### npm start / expo start 
- #### press i | open IOS simulator
- #### press r | to reload (if necessary)
+1. npm start / expo start 
+2. press i | open IOS simulator
+3. press r | to reload (if necessary)
 
+<hr>
 
+## App Description
 
+###### This is an uber eats clone built with **React Native**, using **Redux** to handle state, **Yelp and Google Places APIs** for restaurants and location services, and **Firebase** to house data. 
 
+###### With the option to cycle delivery and pickup options at the top center of the screen, you can search any location with Google's Places API and the feed will update with restaurants from that area using the YELP API. 
 
-# My Universal React Project
+<img src="/assets/readme_images/screen_one_with_location.png" height="600">
 
-<p>
-  <!-- iOS -->
-  <a href="https://itunes.apple.com/app/apple-store/id982107779">
-    <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
-  </a>
-  <!-- Android -->
-  <a href="https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample">
-    <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
-  </a>
-  <!-- Web -->
-  <a href="https://docs.expo.dev/workflow/web/">
-    <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
-  </a>
-</p>
+###### The restaurants will then give you the cooresponding type of food, customer reviews (rated on a 5 point scale), and how many customer reviews there are for the specific restaurant, as well as how expensive the restaurant is.
 
-## 🚀 How to use
+<img src="/assets/readme_images/menu_items.png" height="600">
 
-- Install packages with `yarn` or `npm install`.
-  - If you have native iOS code run `npx pod-install`
-- Run `yarn start` to start the bundler.
-- Open the project in a React runtime to try it:
-  - iOS: [Client iOS](https://itunes.apple.com/app/apple-store/id982107779)
-  - Android: [Client Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample)
-  - Web: Any web browser
+###### As for food, the menu items are hard coded into the screen since the YELP API doesn't give menu items and unless included by customers, and typically it is just an image of a restaurant's menu. You are able to add items to your cart with the checkbox to the left of each food item. The item will then be added to your cart as indicated by the "View Cart" button at the bottom of the screen. This button, once engaged, will also show the total price of your order, with this data persisting even after leaving the screen. Clicking on the "checkout" button will show you a subtotal and a final "checkout" button will then take you to the final scren indicating that your order has been placed successfully. 
 
-## Adding Native Code
+<img src="/assets/readme_images/checkoutOne.png" height="600">
+<img src="/assets/readme_images/checkoutTwo.png" height="600">
 
-This project can be run from a web browser or the Expo client app. You may find that you want to add more native code later on. You can do this by ejecting the project and rebuilding it yourself.
+###### Data is stored via Firebase Firestore
 
-- Run `yarn eject` to create the native projects.
-- You can still run your project in the web browser or Expo client, you just won't be able to access any new native modules you add.
-
-## Publishing
-
-- Deploy the native app to the App store and Play store using this guide: [Deployment](https://docs.expo.dev/distribution/app-stores/).
-- Deploy the website using this guide: [Web deployment](https://docs.expo.dev/distribution/publishing-websites/).
-
-## 📝 Notes
-
-- Learn more about [Universal React](https://docs.expo.dev/).
-- See what API and components are [available in the React runtimes](https://docs.expo.dev/versions/latest/).
-- Find out more about developing apps and websites: [Guides](https://docs.expo.dev/guides/).
+<img src="/assets/readme_images/firestore.png" height="600">
