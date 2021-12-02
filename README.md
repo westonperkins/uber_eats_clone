@@ -26,4 +26,4 @@
 
 ###### Data is stored via Firebase Firestore
 
-<img src="/assets/readme_images/firestore.png" height="600">
+<img src="/assets/readme_images/firestore.png">
